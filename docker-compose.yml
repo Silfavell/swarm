@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  mongo1:
+    image: mongo
+    command: mongod --replSet "rs0"
+    deploy:
+      placement:
+        constraints:
+          - node.Role==Manager
+    networks:
+      - mongo
+
+  mongo2:
+    image: mongo
+    command: mongod --replSet "rs0"
+    deploy:
+      placement:
+        constraints:
+          - node.Role==Worker
+    networks:
+      - mongo
+
+  elasticsearch1:
+    image: elasticsearch:6.5.0
+    hostname: elasticsearch1
+    volumes:
+        - elasticsearch1-data:/usr/share/elasticsearch/data
+    environment:
+        - cluster.name=elasticsearch-cluster
+        - "discovery.zen.ping.unicast.hosts=tasks.elasticsearch1"
+        - "network.host=0.0.0.0"
+        - "node.max_local_storage_nodes=2"
+    ulimits:
+      nofile:
+         soft: 65536
+         hard: 65536
+    environment:
+      ES_JAVA_OPTS: "-Xms750m -Xmx750m"
+    networks:
+        - elasticsearch_distributed
+    deploy:
+        replicas: 2
+        restart_policy:
+          delay: 30s
+          max_attempts: 10
+          window: 120s
+
+networks:
+  mongo:
+  
+  elasticsearch_distributed:
+    driver: overlay
+
+volumes:
+  elasticsearch1-data:
