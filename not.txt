@@ -1,0 +1,1 @@
+wait for it çalışmazsa commandı npm start olarak değiştir ve restart policy ekle
