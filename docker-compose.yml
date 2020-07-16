@@ -60,13 +60,15 @@ services:
     image: backend
     ports:
       - 3000:3000
-    volumes:
-      - ./wait-for-it.sh:/scripts/wait-for-it.sh:ro
-    command: /scripts/wait-for-it.sh -t 180 elasticsearch:9200 -- npm start
+    command: npm start
     networks:
       - sil
     deploy:
       mode: global
+      restart_policy:
+        delay: 30s
+        max_attempts: 10
+        window: 120s
 
 networks:
   sil:
