@@ -62,11 +62,11 @@ services:
     networks:
       - sil
     deploy:
-      mode: global
-      restart_policy:
-        delay: 30s
-        max_attempts: 10
-        window: 120s
+        mode: global
+        restart_policy:
+          delay: 30s
+          max_attempts: 10
+          window: 120s
 
 networks:
   sil:
