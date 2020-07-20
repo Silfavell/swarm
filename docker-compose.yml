@@ -71,7 +71,8 @@ services:
   web:
     image: web
     ports:
-      - 80:5000
+      - 80:80
+      - 443:443
     command: npm start
     networks:
       - sil
