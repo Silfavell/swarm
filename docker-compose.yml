@@ -79,7 +79,7 @@ services:
         mode: global
 
   manager:
-    image: backend
+    image: manager
     ports:
       - 5000:5000
     command: npm start
