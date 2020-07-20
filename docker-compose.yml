@@ -68,6 +68,36 @@ services:
           max_attempts: 10
           window: 120s
 
+  web:
+    image: web
+    ports:
+      - 80:5000
+    command: npm start
+    networks:
+      - sil
+    deploy:
+        mode: global
+
+  manager:
+    image: backend
+    ports:
+      - 5000:5000
+    command: npm start
+    networks:
+      - sil
+    deploy:
+        mode: global
+    
+  admin:
+    image: admin
+    ports:
+      - 6767:6767
+    command: npm start
+    networks:
+      - sil
+    deploy:
+        mode: global
+
 networks:
   sil:
     name: sil
