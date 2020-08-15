@@ -59,7 +59,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ~/products:/public/assets/products
+      - /mnt:/public/assets/products
       - ~/logs:/logs
     command: npm start
     networks:
