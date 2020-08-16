@@ -28,6 +28,22 @@ services:
       sil:
         aliases: 
           - mongo
+          
+  mongo_1_arbiter:
+    image: mongo
+    command: mongod --replSet "rs0"
+    deploy:
+      placement:
+        constraints:
+          - node.Role==Manager
+  
+  mongo_2_arbiter:
+    image: mongo
+    command: mongod --replSet "rs0"
+    deploy:
+      placement:
+        constraints:
+          - node.Role==Worker
 
   elasticsearch:
     image: elasticsearch:6.5.0
