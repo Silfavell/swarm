@@ -62,11 +62,13 @@ services:
     networks:
       - sil
     deploy:
-        replicas: 2
-        restart_policy:
-          delay: 30s
-          max_attempts: 10
-          window: 120s
+      replicas: 2
+      placement:
+        constraints: [node.labels.host == ubuntu]
+      restart_policy:
+        delay: 30s
+        max_attempts: 10
+        window: 120s
 
   backend:
     image: backend
@@ -79,11 +81,13 @@ services:
     networks:
       - sil
     deploy:
-        replicas: 2
-        restart_policy:
-          delay: 30s
-          max_attempts: 10
-          window: 120s
+      replicas: 2
+      placement:
+        constraints: [node.labels.host == ubuntu]
+      restart_policy:
+        delay: 30s
+        max_attempts: 10
+        window: 120s
 
   web:
     image: web
@@ -93,7 +97,7 @@ services:
     networks:
       - sil
     deploy:
-        replicas: 2
+      replicas: 2
 
   manager:
     image: manager
@@ -103,7 +107,9 @@ services:
     networks:
       - sil
     deploy:
-        replicas: 2
+      replicas: 2
+      placement:
+        constraints: [node.labels.host == ubuntu]
     
   admin:
     image: admin
@@ -113,7 +119,9 @@ services:
     networks:
       - sil
     deploy:
-        replicas: 2
+      replicas: 2
+      placement:
+        constraints: [node.labels.host == ubuntu]
 
 networks:
   sil:
