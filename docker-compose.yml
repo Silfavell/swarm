@@ -62,7 +62,7 @@ services:
     networks:
       - sil
     deploy:
-        mode: global
+        replicas: 2
         restart_policy:
           delay: 30s
           max_attempts: 10
@@ -79,7 +79,7 @@ services:
     networks:
       - sil
     deploy:
-        mode: global
+        replicas: 2
         restart_policy:
           delay: 30s
           max_attempts: 10
@@ -93,7 +93,7 @@ services:
     networks:
       - sil
     deploy:
-        mode: global
+        replicas: 2
 
   manager:
     image: manager
@@ -103,7 +103,7 @@ services:
     networks:
       - sil
     deploy:
-        mode: global
+        replicas: 2
     
   admin:
     image: admin
@@ -113,7 +113,7 @@ services:
     networks:
       - sil
     deploy:
-        mode: global
+        replicas: 2
 
 networks:
   sil:
