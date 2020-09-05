@@ -1,1 +1,1 @@
-wait for it çalışmazsa commandı npm start olarak değiştir ve restart policy ekle
+elasticsearchlerin çalışacağını sunuculara "ubuntu" labelını ekle,  sadece mongonun çalışacağını 3. mongo replicasına ubuntu3 etiketi ekle.
