@@ -49,10 +49,16 @@ services:
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
     environment:
-      - cluster.name=elasticsearch-cluster
-      - "discovery.zen.ping.unicast.hosts=tasks.elasticsearch"
-      - "network.host=0.0.0.0"
-      - "node.max_local_storage_nodes=2"
+      - cluster.name=my-cluster
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+      - discovery.seed_hosts=elasticsearch
+      - cluster.initial_master_nodes=ubuntu1,ubuntu2
+      - node.ml=false
+      - xpack.ml.enabled=false
+      - xpack.monitoring.enabled=false
+      - xpack.security.enabled=false
+      - xpack.watcher.enabled=false
+      - bootstrap.memory_lock=false
     ulimits:
       nofile:
         soft: 65536
