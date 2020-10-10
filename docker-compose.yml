@@ -44,7 +44,7 @@ services:
           - mongo
 
   elasticsearch:
-    image: elasticsearch:7.1.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.1
     hostname: elasticsearch
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
