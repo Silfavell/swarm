@@ -49,7 +49,7 @@ services:
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
     environment:
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - ES_JAVA_OPTS=-Xms1024m -Xmx1024m
       - discovery.seed_hosts=elasticsearch #Service name, to let Swarm handle discovery
       - cluster.initial_master_nodes=ubuntu1,ubuntu2 #Swarm nodes host names
       - node.name={{.Node.Hostname}}
