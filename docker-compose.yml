@@ -49,11 +49,11 @@ services:
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
     environment:
-      ES_JAVA_OPTS: "-Xms1024m -Xmx1024m"
-      node.name: "{{.Task.Name}}"
-      discovery.type: zen
-      discovery.seed_hosts: tasks.elasticsearch
-      cluster.initial_master_nodes: sil_elasticsearch.1,sil_elasticsearch.2
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - network.host=0.0.0.0
+      - discovery.seed_hosts=elasticsearch #Service name, to let Swarm handle discovery
+      - cluster.initial_master_nodes=ubuntu1,ubuntu2 #Swarm nodes host names
+      - node.name={{.Node.Hostname}} #To create a predictable node name
     ulimits:
       nofile:
         soft: 65536
