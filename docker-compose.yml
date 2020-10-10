@@ -45,6 +45,7 @@ services:
 
   elasticsearch01:
     image: elasticsearch:7.1.1
+    container_name: elasticsearch
     hostname: elasticsearch
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
@@ -75,6 +76,7 @@ services:
 
   elasticsearch02:
     image: elasticsearch:7.1.1
+    container_name: elasticsearch
     hostname: elasticsearch
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
