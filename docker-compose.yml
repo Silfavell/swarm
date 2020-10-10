@@ -114,7 +114,7 @@ services:
     networks:
       - sil
     deploy:
-      replicas: 2
+      replicas: global
       placement:
         constraints: [node.labels.host == ubuntu]
       restart_policy:
@@ -130,7 +130,9 @@ services:
     networks:
       - sil
     deploy:
-      replicas: 2
+      replicas: global
+      placement:
+        constraints: [node.labels.host == ubuntu]
 
   manager:
     image: manager
@@ -140,7 +142,7 @@ services:
     networks:
       - sil
     deploy:
-      replicas: 2
+      replicas: global
       placement:
         constraints: [node.labels.host == ubuntu]
     
@@ -152,7 +154,7 @@ services:
     networks:
       - sil
     deploy:
-      replicas: 2
+      replicas: global
       placement:
         constraints: [node.labels.host == ubuntu]
 
