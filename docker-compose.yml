@@ -49,7 +49,7 @@ services:
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
     environment:
-      ES_JAVA_OPTS: "=-Xms1024m -Xmx1024m"
+      ES_JAVA_OPTS: "-Xms1024m -Xmx1024m"
       node.name: "{{.Task.Name}}"
       discovery.type: zen
       discovery.seed_hosts: tasks.elasticsearch
