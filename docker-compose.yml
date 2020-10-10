@@ -70,9 +70,6 @@ services:
       mode: global
       placement:
         constraints: [node.labels.host == ubuntu]
-      resources:
-        limits:
-          memory: 900M
       restart_policy:
         delay: 30s
         max_attempts: 10
