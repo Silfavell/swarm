@@ -12,7 +12,7 @@ services:
       - mongo-data:/data/db
     networks:
       sil:
-        aliases: 
+        aliases:
           - mongo
 
   mongo2:
@@ -26,7 +26,7 @@ services:
       - mongo-data:/data/db
     networks:
       sil:
-        aliases: 
+        aliases:
           - mongo
 
   mongo3:
@@ -40,11 +40,11 @@ services:
       - mongo-data:/data/db
     networks:
       sil:
-        aliases: 
+        aliases:
           - mongo
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+    image: elasticsearch:6.5.0
     hostname: elasticsearch
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
@@ -117,7 +117,7 @@ services:
       mode: global
       placement:
         constraints: [node.labels.host == ubuntu]
-    
+
   admin:
     image: admin
     ports:
