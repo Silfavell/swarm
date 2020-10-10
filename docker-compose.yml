@@ -80,9 +80,9 @@ services:
       volumes:
         - elasticsearch-data:/usr/share/elasticsearch/data
       environment:
-        - cluster.name=ubuntu1
+        - cluster.name=ubuntu2
         - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
-        - discovery.seed_hosts=ubuntu2
+        - discovery.seed_hosts=ubuntu1
         - cluster.initial_master_nodes=ubuntu1,ubuntu2
         - node.ml=false
         - xpack.ml.enabled=false
@@ -103,36 +103,6 @@ services:
           delay: 30s
           max_attempts: 10
           window: 120s
-
-  elasticsearch02:
-    image: elasticsearch:6.5.0
-    hostname: elasticsearch
-    volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
-    environment:
-      - cluster.name=ubuntu2
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
-      - discovery.seed_hosts=ubuntu1
-      - cluster.initial_master_nodes=ubuntu1,ubuntu2
-      - node.ml=false
-      - xpack.ml.enabled=false
-      - xpack.monitoring.enabled=false
-      - xpack.security.enabled=false
-      - xpack.watcher.enabled=false
-      - bootstrap.memory_lock=false
-    ulimits:
-      nofile:
-        soft: 65536
-        hard: 65536
-    networks:
-      - sil
-    deploy:
-      placement:
-        constraints: [node.labels.host == ubuntu]
-      restart_policy:
-        delay: 30s
-        max_attempts: 10
-        window: 120s
 
   backend:
     image: backend
