@@ -45,15 +45,22 @@ services:
 
   elasticsearch:
     image: elasticsearch:7.1.1
-    hostname: elasticsearch
+    hostname: "{{.Node.Hostname}}"
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
     environment:
       - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
-      - network.host=0.0.0.0
       - discovery.seed_hosts=elasticsearch #Service name, to let Swarm handle discovery
       - cluster.initial_master_nodes=ubuntu1,ubuntu2 #Swarm nodes host names
-      - node.name={{.Node.Hostname}} #To create a predictable node name
+      - node.name={{.Node.Hostname}}
+      - cluster.name=my-cluster
+      - discovery.seed_hosts=elasticsearch
+      - node.ml=false
+      - xpack.ml.enabled=false
+      - xpack.monitoring.enabled=false
+      - xpack.security.enabled=false
+      - xpack.watcher.enabled=false
+      - bootstrap.memory_lock=false
     ulimits:
       nofile:
         soft: 65536
