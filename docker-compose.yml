@@ -44,7 +44,7 @@ services:
           - mongo
 
   elasticsearch01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+    image: elasticsearch:7.1.1
     hostname: elasticsearch
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
@@ -74,7 +74,7 @@ services:
         window: 120s
 
   elasticsearch02:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+    image: elasticsearch:7.1.1
     hostname: elasticsearch
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
