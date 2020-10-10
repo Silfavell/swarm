@@ -45,7 +45,7 @@ services:
 
   elasticsearch:
     image: elasticsearch:7.1.1
-    hostname: "{{.Node.Hostname}}"
+    # hostname: "{{.Node.Hostname}}"
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
     environment:
