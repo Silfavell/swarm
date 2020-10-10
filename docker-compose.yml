@@ -44,7 +44,7 @@ services:
           - mongo
 
   elasticsearch:
-    image: elasticsearch:6.5.0
+    image: elasticsearch:7.6.2
     hostname: elasticsearch
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
