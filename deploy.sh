@@ -1,0 +1,1 @@
+docker stack deploy -c docker-compose.yml sil --with-registry-auth

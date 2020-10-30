@@ -76,7 +76,7 @@ services:
         window: 120s
 
   backend:
-    image: backend
+    image: registry.gitlab.com/ipekmuhammet/backend
     ports:
       - 3000:3000
     volumes:
@@ -95,7 +95,7 @@ services:
         window: 120s
 
   web:
-    image: web
+    image: registry.gitlab.com/ipekmuhammet/web
     ports:
       - 80:80
       - 443:443
@@ -107,7 +107,7 @@ services:
         constraints: [node.labels.host == ubuntu]
 
   manager:
-    image: manager
+    image: registry.gitlab.com/ipekmuhammet/manager
     ports:
       - 5000:5000
     command: npm start
@@ -119,7 +119,7 @@ services:
         constraints: [node.labels.host == ubuntu]
 
   admin:
-    image: admin
+    image: registry.gitlab.com/ipekmuhammet/admin
     ports:
       - 6767:6767
     command: npm start
