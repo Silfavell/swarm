@@ -1,7 +1,6 @@
-docker stack deploy -c docker-compose.yml sil
+sh deploy.sh
 
 bash init-slaves.sh
-
 
 ON SLAVES --> bash accept-slave.sh
 
