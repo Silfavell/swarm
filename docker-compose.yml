@@ -96,7 +96,7 @@ services:
         window: 120s
 
   web:
-    image: registry.gitlab.com/ipekmuhammet/web
+    image: nginx #registry.gitlab.com/ipekmuhammet/web
     container_name: web
     ports:
       - 80:80
